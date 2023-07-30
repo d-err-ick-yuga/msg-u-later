@@ -4,18 +4,15 @@
 const loginButton = document.querySelector('#login');
 const registerButton = document.querySelector('#register');
 
-loginButton.addEventListener('click', modal);
+loginButton.addEventListener('click', loginModal);
 
-registerButton.addEventListener('click', ()=>{
-    modal(['text', 'password', 'submit']);
-    console.log('running bro');
-});
+registerButton.addEventListener('click', registerModal);
 
 function loginModal(){
-    const modal = modal(['text', 'password', 'submit']);
+    modal(['text', 'password', 'submit']);
 }
 function registerModal(){
-    const modal = modal(['email', 'text', 'password', 'submit']);
+    modal(['email', 'text', 'password', 'submit']);
 }
 
 function modal(types) {
