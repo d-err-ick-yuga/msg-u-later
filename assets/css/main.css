@@ -1,32 +1,122 @@
 body {
-    background-color: black;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
 }
 
-form {
-    align-items: center;
-    border: 1px solid white;
-    display: flex;
-    flex-direction: column;
-    height: 250px;
-    justify-content: space-evenly;
+footer {
+    bottom: 0;
+    position: fixed;
+    text-align: center;
     width: 100%;
 }
 
-input {
-    background-color: rgb(148, 200, 180);
-    border: none;
-    color: black;
-    font-size: 1.3rem;
-    width: 60%;
+header {
+    align-items: center;
+    border-bottom: 1px solid rgb(4, 43, 62);
+    display: flex;
+    font-family: cursive;
+    height: 4rem;
+    justify-content: space-around;
+    padding-left: 1rem;
 }
 
-#submitbutton {
-    padding: 5px;
-    width: 20%;
+main {
+    align-items: center;
+    flex-direction: column;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    width: 100%;
 }
 
-#submitbutton:hover {
+main > p {
+    width: 50%;
+}
+
+#login {
+    background-color: white;
+    border: 1px solid rgb(58, 134, 248);
+    color: rgb(58, 134, 248);
+    font-weight: bolder;
+    padding: 10px 15px 10px 15px;
+    margin: 0 5px;
+}
+
+#register {
+    background-color: white;
+    border: 1px solid rgb(46, 193, 157);
+    color: rgb(46, 193, 157);
+    font-weight: bolder;
+    padding: 10px 15px 10px 15px;
+    margin: 0 5px;
+}
+
+#login:hover {
+    background-color: rgb(58, 134, 248);
+    color: white;
     cursor: pointer;
+}
+
+#register:hover {
+    background-color: rgb(46, 193, 157);
+    color: white;
+    cursor: pointer;
+}
+
+/*
+    Classes for dynamically generated HTML. 
+*/
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed; 
+    background-color: white;
+    opacity: 1;
+    left:50%; 
+    transform: translateX(-50%); 
+    top: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 80%;
+    height: 40%; border: 1px solid black;
+    z-index: 2;
+}
+
+.exitButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.exitButton:hover {
+    cursor: pointer;
+}
+
+.modalBackground {
+    position: fixed;
+    top: 0;
+    background-color: black;
+    height: 100%;
+    opacity: 0.7;
+    width: 100%;
+    z-index: 1;
+}
+
+/*
+    Media Queries, for changes in screen size.
+*/
+
+@media screen and (max-width: 650px) {
+    header {
+        border: none;
+        flex-direction: column;
+        height: fit-content;
+        justify-content: center;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
 }
