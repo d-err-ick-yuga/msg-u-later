@@ -6,18 +6,23 @@
         <link rel='stylesheet' href='./assets/css/main.css'>
     </head>
     <body>
+        <header>
+            <h1>✉️ Msg u later: scheduled messaging</h1>
+            <div>
+                <button id="login">Log In</button>
+                <button id="register">Sign Up</button>
+            </div>
+        </header>
         <main>
-            <h1>Msg u later</h1>
-            <p>Sometimes a message shouldn't be sent now, for various reasons.
-            It should be sent at a designated time, or when you can't be reached.
-            This is program that will facillitate this for you.
+            <p>Sometimes a message shouldn't be sent now, for various reasons: it should be sent later, or when you can't be reached.
             </p>
-            <form method='post' action=''>
-                <input type='username' name='username' placeholder='username' required>
-                <input type='password' name='password' placeholder='password' required>
-                <input type='submit' value='Log In'>
-            </form>
+            <p>
+            This is a program that will facilitate this for you.
+            </p>
         </main>
+        <footer>
+            <div>&copy; 2023 by Derrick. All rights reserved.</div>
+        </footer>
         <script src='./assets/js/main.js'></script>
     </body>
 </html>

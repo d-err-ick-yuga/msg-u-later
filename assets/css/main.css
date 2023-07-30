@@ -1,3 +1,32 @@
 body {
+    background-color: black;
+    color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+form {
+    align-items: center;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+input {
+    background-color: rgb(148, 200, 180);
+    border: none;
+    color: black;
+    font-size: 1.3rem;
+    width: 60%;
+}
+
+#submitbutton {
+    padding: 5px;
+    width: 20%;
+}
+
+#submitbutton:hover {
+    cursor: pointer;
 }
