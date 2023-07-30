@@ -38,5 +38,7 @@ if(isset($_POST['username']) && isset($_POST['password']) &&
     $sql = 'INSERT INTO users VALUES (NULL, ?, ?, ?)';
     $statement = $pdo->prepare($sql);
     $statement->execute([$username, $password, $email]);
-    
+
+    header('Content-Type: application/json');
+    echo json_encode('Successful sign up.');
 }
