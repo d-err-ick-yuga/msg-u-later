@@ -77,3 +77,23 @@ function createExitButton() {
 
     return exitButton;
 }
+
+async function checkUser(url) {
+    let optionsObj = {
+        method: 'POST',
+        body: JSON.stringify({
+            username: 'dthor',
+            password: '123432325'
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    };
+    let response = await fetch(url, optionsObj);
+    console.log(response);
+
+    let checkValue = await response.json();
+    console.log(checkValue);
+}
+
+checkUser('http://localhost:80/msg-u-later/login.php');
