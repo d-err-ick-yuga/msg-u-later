@@ -104,6 +104,26 @@ main > p {
     z-index: 1;
 }
 
+.modalForm {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.modalForm > input[type='submit'] {
+    border: none;
+    padding: 10px 15px 10px 15px;
+    width: 100px;
+    border: 1px solid green;
+    align-self: center;
+}
+
+.modalForm > input[type='submit']:hover {
+    cursor: pointer;
+}
+
+
 /*
     Media Queries, for changes in screen size.
 */

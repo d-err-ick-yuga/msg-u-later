@@ -38,12 +38,30 @@ function modal(types) {
 }
 
 function createForm(inputTypes) {
+    let placeholders = [];
+    let submitValue = '';
     const form = document.createElement('form');
+    if(inputTypes.length > 3) {
+        placeholders.push(...['Email', 'Username', 'Password']);
+        submitValue = 'Sign Up';
+    }
+    else {
+        placeholders.push(...['Username', 'Password']);
+        submitValue = 'Log In';
+    }
     for(let iType of inputTypes) {
         let input = document.createElement('input');
         input.setAttribute('type', iType);
+        if(placeholders.length > 0) {
+            input.setAttribute('placeholder', placeholders.shift());
+            input.setAttribute('required', 'true');
+        }
+        else {
+            input.setAttribute('value', submitValue);
+        }
         form.appendChild(input);
     }
+    form.classList.add('modalForm');
     return form;
 }
 
