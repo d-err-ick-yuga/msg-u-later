@@ -7,19 +7,20 @@ if(isset($_POST['username']) && isset($_POST['password']) &&
    isset($_POST['email']))
 {
     $username = $_POST['username'];
-    $password = password_hash($_POST['password']);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $email = $_POST['email'];
-
-    $result = ["register" => "true"];
-
+    //
     // Check if username is taken.
     $sql = 'SELECT username FROM users WHERE username=?';
     $statement = $pdo->prepare($sql);
     $statement->execute([$username]);
-    if($statement->rowCount() > 0)
+    $row = $statement->fetch();
+
+    if($row)
     {
         header('Content-Type: application/json');
-        echo json_encode('username taken.');
+        $result = ["message" => "username taken"];
+        echo json_encode($result);
         exit;
     }
 
@@ -27,10 +28,13 @@ if(isset($_POST['username']) && isset($_POST['password']) &&
     $sql = 'SELECT email FROM users WHERE email=?';
     $statement = $pdo->prepare($sql);
     $statement->execute([$email]);
-    if($statement->rowCount() > 0)
+    $row = $statement->fetch();
+
+    if($row)
     {
         header('Content-Type: application/json');
-        echo json_encode('email already used.');
+        $result = ["message" => "email already used"];
+        echo json_encode($result);
         exit;
     }
 
@@ -39,6 +43,15 @@ if(isset($_POST['username']) && isset($_POST['password']) &&
     $statement = $pdo->prepare($sql);
     $statement->execute([$username, $password, $email]);
 
+    session_start();
+    $_SESSION['user'] = $username;
+
     header('Content-Type: application/json');
-    echo json_encode('Successful sign up.');
+    $result = ["message" => "true"];
+    echo json_encode($result);
+}
+else {
+    header('Content-Type: application/json');
+    $result = ['message' => 'wrong request'];
+    echo json_encode($result);
 }

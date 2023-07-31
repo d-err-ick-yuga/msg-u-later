@@ -9,8 +9,16 @@
         <header>
             <h1>✉️ Msg u later: scheduled messaging</h1>
             <div>
+                <?php 
+                    session_start();
+                    if(!isset($_SESSION['user'])): 
+                ?>
                 <button id="login">Log In</button>
                 <button id="register">Sign Up</button>
+                <?php else: ?>
+                <div><?php echo $_SESSION['user'] ?></div>
+                <button id='signout'>Sign Out</button>
+                <?php endif; ?>
             </div>
         </header>
         <main>

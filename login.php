@@ -1,30 +1,36 @@
 <?php
+// ini_set('display_errors', 'on');
+// error_reporting(E_ALL);
+
 require_once 'dbconnector.php';
 
 $_POST = json_decode(file_get_contents('php://input'), true);
 
-if(isset($_POST['username']) && isset($_POST['password']))
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+$sql = 'SELECT username, password FROM users WHERE username=?';
+$statement = $pdo->prepare($sql);
+$statement->execute([$username]);
+
+$row = $statement->fetch();
+
+if($row) 
 {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $result = ["login" => "true"];
-
-    $sql = 'SELECT * FROM users WHERE username=? AND password=?';
-    $statement = $pdo->prepare($sql);
-    $statement->execute([$username, $password]);
-
-    $postCount = $statement->rowCount();
-    if($postCount > 0) 
+    $loginStatus = password_verify($password, $row['password']);
+    if($loginStatus) 
     {
-        header('Content-Type: application/json');
-        $response = true;
-        echo json_encode($response);
+        session_start();
+        $_SESSION['user'] = $username;
+
+        echo json_encode(true); 
     }
     else 
     {
-        header('Content-Type: application/json');
-        $response = false;
-        echo json_encode($response);
+        echo json_decode(false);
     }
+}
+else
+{
+    echo json_encode(false);
 }
